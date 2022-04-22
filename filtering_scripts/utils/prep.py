@@ -42,12 +42,19 @@ def clean_text(pairs, config, save=False):
     '''
     for pair in pairs:
 
+        # if config.dataset == "tesum":
+        #     article_content = pair['cleaned_text']
+        # else:
         article_content = pair['text']
-        del pair['text']
         updated_article_content = remove_timestamp(article_content)
         updated_article_content = filter_english(updated_article_content)
         updated_article_content = basic_cleaning(updated_article_content)
+        # if config.dataset == "tesum":
+        #     if 'text' in pair.keys():
+        del pair['text']
         pair['cleaned_text'] = updated_article_content
+        # else:
+        #     pair['text'] = updated_article_content
         
         summary_content = pair['summary']
         updated_summary_content = remove_timestamp(summary_content)
@@ -58,7 +65,7 @@ def clean_text(pairs, config, save=False):
     print(len(pairs), " pairs cleaned.")
 
     if save:
-        clean_file = config.save_dir + "cleaned_%s.jsonl"%config.dataset
+        clean_file = config.save_dir[config.dataset] + "cleaned_%s.jsonl"%config.dataset
         ut.write_finalPairs(clean_file, pairs)
     return pairs
 
@@ -117,7 +124,7 @@ def apply_basic_filters(all_pairs, config, save=False):
     dup_summ_count = 0
 
     for pair in all_pairs:
-        article_content = remove_nonTelugu(pair['text'])
+        article_content = remove_nonTelugu(pair['cleaned_text'])
         summary_content = remove_nonTelugu(pair['summary'])
 
         if not isEmptyPair(article_content, summary_content):  # if not empty pair
@@ -141,7 +148,7 @@ def apply_basic_filters(all_pairs, config, save=False):
                 pairs_dictionary[pairText] = [pair]  # book-keeping of each pair
                 summary_dictionary[summary_content] = [pair] # book-keeping of each summary
 
-                if not has_prefix(pair['text'], pair['summary']):
+                if not has_prefix(pair['cleaned_text'], pair['summary']):
                     valid_pairs.append(pair)  # final filtered pair
                 else:
                     prefixed_pairs.append(pair)
@@ -151,19 +158,19 @@ def apply_basic_filters(all_pairs, config, save=False):
     
     if save:
         # Save prefix IDs
-        prefixID_file = config.save_dir + 'prefixIDs_%s.txt'%config.dataset
+        prefixID_file = config.save_dir[config.dataset] + 'prefixIDs_%s.txt'%config.dataset
         ut.saveIDs(prefixed_pairs, prefixID_file)
 
         # Save empty IDs
-        emptyID_file = config.save_dir + 'emptyIDs_%s.txt'%config.dataset
+        emptyID_file = config.save_dir[config.dataset] + 'emptyIDs_%s.txt'%config.dataset
         ut.saveIDs(empty_pairs, emptyID_file)
 
         # Save duplicate pair IDs
-        dupID_file = config.save_dir + 'duplicateIDs_%s.txt'%config.dataset
+        dupID_file = config.save_dir[config.dataset] + 'duplicateIDs_%s.txt'%config.dataset
         ut.saveIDs(duplicate_pairs, dupID_file)
 
         # Save duplicate summary IDs
-        dupSummID_file = config.save_dir + 'dupSummaryIDs_%s.txt'%config.dataset
+        dupSummID_file = config.save_dir[config.dataset] + 'dupSummaryIDs_%s.txt'%config.dataset
         ut.saveIDs(duplicate_summary_pairs, dupSummID_file)
 
     print("\n# Empty article/summary/pairs: ", len(empty_pairs))

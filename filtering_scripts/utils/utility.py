@@ -29,6 +29,7 @@ def saveIDs(pairs, fname):
 def read_data(filename):
     pairs = []
     for line in open(filename, 'r', encoding='utf-8'):
+        if line.strip():
             pairs.append(json.loads(line))
     if len(pairs) == 1:
         pairs = pairs[0]

@@ -14,7 +14,7 @@ class Config:
     file_exts = {'xlsum': "_total.jsonl", 'massivesum': ".all.jsonl", 'tesum': "_tesum_all.jsonl"}
     msfiles = {'hi': 'Hindi', 'te': 'Telugu', 'mr': 'Marathi', 'gu': 'Gujarati'}
 
-    def __init__(self, source='../data/', dataset='xlsum', lang='te', filetype='.jsonl'):
+    def __init__(self, source='./', dataset='xlsum', lang='te', filetype='.jsonl'):
         self.source = source
         self.dataset = dataset
         self.lang = lang
@@ -28,8 +28,8 @@ class Config:
         else:
             self.datafile = self.dataset_dir[self.dataset] + self.msfiles[self.lang] + "_filtered.jsonl.gz"
 
-        self.save_dir = self.dataset_dir[self.dataset] + 'save/' + self.lang + "_"
-        self.filter_dir = self.dataset_dir[self.dataset] + 'filtered/' + self.lang + "_"
+        self.save_dir = {'xlsum': './excluded_IDs/xlsum/%s_XLSum_v2.0/'%LANGUAGES[self.dataset][self.lang] + self.lang + "_", 'massivesum': './excluded_IDs/massivesum/' + self.lang + "_"}
+        self.filter_dir = self.dataset_dir[self.dataset] + self.lang + "_"
 
     def set_dataset(self, dataset_name):
         self.dataset = dataset_name

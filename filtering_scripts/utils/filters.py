@@ -63,10 +63,10 @@ def add_Metrics(pairs, lang):
 
     for each in pairs:
 
-        article_sents = sentence_tokenize.sentence_split(each['text'], lang='te')
-        
+        article_sents = sentence_tokenize.sentence_split(each['cleaned_text'], lang='te')
+
         summary_tokens = indic_tokenize.trivial_tokenize(each['summary'])
-        article_tokens = indic_tokenize.trivial_tokenize(each['text'])
+        article_tokens = indic_tokenize.trivial_tokenize(each['cleaned_text'])
         title_tokens = indic_tokenize.trivial_tokenize(each.get('title', ''))
 
 

@@ -6,7 +6,7 @@
    
   Each JSON sample contains a `cleaned_text` field, that is the processed article text. The original articles are available only via the URLs provided with each JSON sample. 
   
-#### Preparing article text 
+### Preparing article text 
 
   The script for extracting the corresponding article content, using the URL, is also provided and can be used as follows:
   

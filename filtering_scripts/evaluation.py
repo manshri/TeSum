@@ -37,21 +37,25 @@ def evaluate(config):
     df = fltr.add_Metrics(filtered_pairs, lang=config.lang)
     print("Converted to dataframe.")
 
-    # saving the dataframe columns in a csv(excluding text and summary)
+    '''
+    # Optional Save
+    
+    # Saving the dataframe columns in a csv(excluding text and summary)
     metrics_csv_file = config.filter_dir + "metrics_%s.csv"%config.dataset
     df2 = df.loc[:, ~df.columns.isin(['url', 'text', 'summary'])]
-    # df2.to_csv(metrics_csv_file)  # optional, if needed
-    # print('metrics csv saved.')
-
-    # Save pairs with metrics
-    metrics_file = config.filter_dir + "metrics_%s.jsonl"%config.dataset
+    df2.to_csv(metrics_csv_file)  # optional, if needed
+    print('metrics csv saved.')
+    
+    ## Save pairs with metrics
+    # metrics_file = config.filter_dir + "metrics_%s.jsonl"%config.dataset
     # ut.writeDF_to_jsonl(df, metrics_file)  # optional, if needed
+    '''
 
     ## filter by minimum numbers-of-sentences
-    minSent_pair_df = fltr.filter_frameCol(df, "sent_count", ">=", config.minSentCount)
+    minSent_pair_df = fltr.filter_frameCol(df, "article_sentence_count", ">=", config.minSentCount)
 
     # filter by minimum numbers-of-tokens in article and summary
-    minTokens_pair_df = fltr.rangeFilter_frameCol(minSent_pair_df, ["article_len", "summary_len"], [">=", ">="], [config.minArticleLength, config.minSummaryLength])
+    minTokens_pair_df = fltr.rangeFilter_frameCol(minSent_pair_df, ["article_token_count", "summary_token_count"], [">=", ">="], [config.minArticleLength, config.minSummaryLength])
 
     # filter by minimum compression%
     minCompression_pair_df = fltr.filter_frameCol(minTokens_pair_df, "compression", ">=", config.minCompression)
@@ -70,11 +74,17 @@ def evaluate(config):
     filter_file = config.filter_dir + "filtered_%s.jsonl"%config.dataset
     ut.writeDF_to_jsonl(validAbstractivity_pair_df, filter_file)
 
+    ## Optional # Saving the dataframe columns in a csv(excluding text and summary)
+    # metrics_csv_file = config.filter_dir + "filtered_metrics_%s.csv"%config.dataset
+    # df3 = validAbstractivity_pair_df.loc[:, ~validAbstractivity_pair_df.columns.isin(['url', 'cleaned_text', 'summary'])]
+    # df3.to_csv(metrics_csv_file)  # optional, if needed
+    # print('metrics csv saved.')
+
 
 def main():
     parser = argparse.ArgumentParser(description='Process datset & language parameters.')
     parser.add_argument('--lang', type=str, default='te', help='working language')
-    parser.add_argument('--datapath', default='../data/', help='data path') # , type=dir_path
+    parser.add_argument('--datapath', default='./', help='data path') # , type=dir_path
     parser.add_argument('--filetype', type=str, default='.jsonl', choices=['.jsonl', '.jsonl.gz'], help='file compression type')
     parser.add_argument('--dataset_name', type=str, required=True, choices=['all', 'tesum', 'xlsum', 'massivesum'], help='specify dataset name/category')
     args = parser.parse_args()
