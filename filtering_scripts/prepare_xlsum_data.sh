@@ -1,7 +1,4 @@
-## For MassiveSumm,
-# Make necessary path/filename changes to the following
-
-# Update below the LANGUAGE as needed from ['hindi', 'punjabi', 'telugu', 'gujarati']
+# Update below the LANGUAGE as needed from ['hindi', 'marathi', 'telugu', 'gujarati']
 LANGUAGE="telugu"
 NAME="${LANGUAGE}_XLSum_v2.0"
 

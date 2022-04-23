@@ -86,12 +86,12 @@ def main():
     parser.add_argument('--lang', type=str, default='te', help='working language')
     parser.add_argument('--datapath', default='./', help='data path') # , type=dir_path
     parser.add_argument('--filetype', type=str, default='.jsonl', choices=['.jsonl', '.jsonl.gz'], help='file compression type')
-    parser.add_argument('--dataset_name', type=str, required=True, choices=['all', 'tesum', 'xlsum', 'massivesum'], help='specify dataset name/category')
+    parser.add_argument('--dataset_name', type=str, required=True, choices=['tesum', 'xlsum', 'massivesumm'], help='specify dataset name/category')
     args = parser.parse_args()
 
-    if args.filetype == ".jsonl.gz" and not args.dataset_name == "massivesum":
+    if args.filetype == ".jsonl.gz" and not args.dataset_name == "massivesumm":
         raise TypeError("Only massivesumm dataset has .jsonl.gz filetype.")
-    elif not args.filetype == ".jsonl.gz" and args.dataset_name == "massivesum":
+    elif not args.filetype == ".jsonl.gz" and args.dataset_name == "massivesumm":
         raise TypeError("Massivesumm dataset has only .jsonl.gz filetype.")
 
     config = Config(args.datapath, args.dataset_name, args.lang, args.filetype)

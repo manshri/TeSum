@@ -1,10 +1,10 @@
 #!/bin/sh
 
 ## Possible argument values
-	# dataset_name options ['xlsum', 'massivesum']
+	# dataset_name options ['xlsum', 'massivesumm']
 	# lang options ['te', 'hi', 'mr', 'gu']
 
-python evaluation.py --lang='te' --dataset_name='tesum'
+python3 evaluation.py --lang='te' --dataset_name='xlsum'
 
-## Use the following, if you have '.jsonl.gz' file format for MassiveSum dataset.
-# python data_evaluation.py --lang='te' --dataset_name='massivesum' --filetype='.jsonl.gz'
+## Use the following, if you have '.jsonl.gz' file format for MassiveSumm dataset.
+# python data_evaluation.py --lang='te' --dataset_name='massivesumm' --filetype='.jsonl.gz'

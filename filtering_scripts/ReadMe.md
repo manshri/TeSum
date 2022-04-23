@@ -10,7 +10,7 @@
 
   To run the filtering scripts yourself, you would first need to download the (Telugu, Hindi, Marathi and Gujarati) datasets from [XL-Sum git](https://github.com/csebuetnlp/xl-sum) and follow the instructions given below:
 	
-(Note: MassiveSumm dataset was graciously provided to us by the authors and as per our best knowledge, the public link for the dataset is unavailable so far)
+(Note: MassiveSumm dataset was graciously provided to us by the authors and as per our best knowledge, the public link for the dataset is unavailable so far, 23rd Apr 2022)
 
 ### Running the scripts
   
@@ -19,10 +19,15 @@
   ```
   $ sh prepare_xlsum_data.sh
   ```
-  * Make any necessary changes to the data paths in the `config.py` file
+  * Make any necessary path/filename changes to the data paths in the `config.py` file
   * Finally, to apply the filters, run the following:
   ```
-  $ sh run.sh
+  $ python3 evaluation.py --lang='te' --dataset_name='xlsum'
   ```
-  * Optionally, edit the `run.sh` file for your desired `--lang` and `--dataset_name` values
+  * MassiveSumm data input file (whenever it becomes publicly available), can be directly ingested by the filtering scripts with `--filetype=".jsonl.gz"`
+  ```
+  $ python3 evaluation.py --lang='te' --dataset_name='massivesumm' --filetype=".jsonl.gz"
+  ```
+
+  * Optionally, you can use the `run.sh` file for your desired `--lang` and `--dataset_name` values
   
