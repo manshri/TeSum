@@ -8,12 +8,7 @@
   
 ### Preparing article text 
 
-  The script for extracting the corresponding article content, using the URL, is also provided and can be used as follows:
-  
-  ```
-  $ python3 preparing_data.py
-  
-  ```
+  The script for fetching the corresponding article content, using the URL, and generating the `text` will be added soon. This `text` is further processed manually to generate the `cleaned_text` field in the JSONLs.
 
 
 

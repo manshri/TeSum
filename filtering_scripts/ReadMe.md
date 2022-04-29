@@ -17,16 +17,16 @@
   * Download and place the data files in the corresponding folders, `./xlsum/` or `./massivesumm/`
   * Prepare the XL-Sum data input file, by running the following:
   ```
-  $ sh prepare_xlsum_data.sh
+  	$ sh prepare_xlsum_data.sh
   ```
   * Make any necessary path/filename changes to the data paths in the `config.py` file
   * Finally, to apply the filters, run the following:
   ```
-  $ python3 evaluation.py --lang='te' --dataset_name='xlsum'
+  	$ python3 data_filters.py --lang='te' --dataset_name='xlsum'
   ```
   * MassiveSumm data input file (whenever it becomes publicly available), can be directly ingested by the filtering scripts with `--filetype=".jsonl.gz"`
   ```
-  $ python3 evaluation.py --lang='te' --dataset_name='massivesumm' --filetype=".jsonl.gz"
+  	$ python3 data_filters.py --lang='te' --dataset_name='massivesumm' --filetype=".jsonl.gz"
   ```
 
   * Optionally, you can use the `run.sh` file for your desired `--lang` and `--dataset_name` values
