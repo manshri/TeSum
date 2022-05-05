@@ -51,10 +51,10 @@ Following are the Model Scores on TeSum test set, with the corresponding links f
 
 MODEL | CITATION | ROUGE-1 | ROUGE-2 | ROUGE-L | CODE
 ------|----------|---------|---------|---------|-------------
-Pointer Generator | [See et al. 2017](https://nlp.stanford.edu/pubs/see2017get.pdf) | 29.39 | 10.48 | 29.02 | [Link](https://github.com/atulkum/pointer_summarizer)
-MLE + RL-wo | [Paulus 2017](https://arxiv.org/pdf/1705.04304.pdf?ref=hackernoon.com) | 39.64 | 24.13 | 39.37 | [Link](https://github.com/rohithreddy024/Text-Summarizer-Pytorch) 
-BertSumAbs | [Liu and Lapata 2019](https://arxiv.org/pdf/1908.08345.pdf?ref=hackernoon.com) | 31.31 | 18.49 | 25.05 | [Link](https://github.com/nlpyang/PreSumm)
-mT5-small | [Xue et al. 2020](https://arxiv.org/pdf/2010.11934.pdf) | 40.53 | 24.61 | 33.79 | [Link](https://github.com/csebuetnlp/xl-sum)
+Pointer Generator | [See et al. 2017](https://nlp.stanford.edu/pubs/see2017get.pdf) | 39.37 | 22.72 | 32.15 | [Link](https://github.com/atulkum/pointer_summarizer)
+MLE + RL-wo | [Paulus 2017](https://arxiv.org/pdf/1705.04304.pdf?ref=hackernoon.com) | 38.09 | 21.9 | 31.77 | [Link](https://github.com/rohithreddy024/Text-Summarizer-Pytorch) 
+BertSumAbs | [Liu and Lapata 2019](https://arxiv.org/pdf/1908.08345.pdf?ref=hackernoon.com) | 26.49 | 12.55 | 19.6 | [Link](https://github.com/nlpyang/PreSumm)
+mT5-small | [Xue et al. 2020](https://arxiv.org/pdf/2010.11934.pdf) | 37.42 | 20.82 | 30.88 | [Link](https://github.com/csebuetnlp/xl-sum)
 
 
 Further, the parameter settings used is given below.

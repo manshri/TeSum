@@ -10,7 +10,7 @@
 
   To run the filtering scripts yourself, you would first need to download the (Telugu, Hindi, Marathi and Gujarati) datasets from [XL-Sum git](https://github.com/csebuetnlp/xl-sum) and follow the instructions given below:
 	
-(Note: MassiveSumm dataset was graciously provided to us by the authors and as per our best knowledge, the public link for the dataset is unavailable so far, 23rd Apr 2022)
+(Note: MassiveSumm dataset was graciously provided to us by the authors and as per our best knowledge, the public link for the complete dataset is unavailable so far, 23rd Apr 2022)
 
 ### Running the scripts
   
