@@ -19,7 +19,7 @@ This repository contains the code and data of the paper titled **"TeSum: Human-G
   
   We are releasing the first version of our TeSum dataset, that is human-generated and has gone through an extensive filtering and sampling-based-human-evaluation process as reported in the paper. For advance usage and model training purposes, the data is being provided as carefully prepared and feature balanced splits of 80%-10%-10% for train-dev-test sets respectively.
   
-  All dataset files in the given `data.tar.xz`, are in `.jsonl` format i.e. one JSON per line. One example from the dataset is given below in JSON format. Here, the *cleaned-text* field contains the processed text from the corresponding article link. *cleaned-text* and *summary* both are tokenized and provided as a list of sentences. Other fields are self-explanatory.
+  All dataset files in the given `data.tar.xz`, are in `.jsonl` format i.e. one JSON per line. One example from the dataset is given below in JSON format. Here, the `cleaned-text` field contains the processed text from the corresponding article link. `cleaned-text` and `summary` both are tokenized and provided as a list of sentences. Other fields are self-explanatory.
   
   ```
   {
